@@ -1,0 +1,8 @@
+# Required libraries
+
+streamlit
+pandas
+numpy
+datetime
+matplotlib
+graph_object
