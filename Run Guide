@@ -1,0 +1,8 @@
+# Notes 
+
+
+# library installation
+# pip install -r requirements.txt
+
+# streamlit run command
+# streamlit run rede_model.py
