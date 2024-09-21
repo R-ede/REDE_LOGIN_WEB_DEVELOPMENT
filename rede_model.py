@@ -1,4 +1,3 @@
- # pip install -r requirement.txt
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -8,6 +7,7 @@ import plotly.graph_objects as go
 
 from io import BytesIO
 
+logo_path = r"C:/Users/XY663FG/Downloads/GRADIENT BLACK.png"
 
 
 valid_usernames = {'balaji': 'password123', 'kannan': 'parentpass', 'leo': 'tutorpass','super_admin':'adminpass'}
@@ -37,7 +37,7 @@ def login_page():
 
     with col2:
         #st.markdown("<h1 style='text-align: center; color: black;'>Pointed Educational Solutions</h1>", unsafe_allow_html=True)
-        st.image(r"C:/Users/XY663FG/Downloads/GRADIENT BLACK.png", use_column_width=True)
+        st.image(logo_path, use_column_width=True)
     with col3:
         st.write("")
 
@@ -63,13 +63,13 @@ def login_page():
 
     #role = st.selectbox('Login as:', ['Select Role', 'Student', 'Parent', 'Tutor'])
     role = None
-    col4, col1, col2, col3, col5, col6 = st.columns([1, 1, 1, 1, 1, 1])
+    col1, col2, col3,col4,col5, col6,col7= st.columns([1, 1, 1, 1, 1, 1,1])
     
-    with col4:
+    with col1:
         if st.button('Student'):
             role = 'Student'
 
-    with col2:
+    with col3:
         if st.button('Tutor'):
             role = 'Tutor'
 
@@ -77,7 +77,7 @@ def login_page():
         if st.button('Parent'):
             role = 'Parent'
 
-    with col6:
+    with col7:
         if st.button('admin'):
             role = 'admin'
 
@@ -208,6 +208,54 @@ def login_page():
         </div>
     """, unsafe_allow_html=True)
 
+def display_user_profile(user_name):
+    # Placeholder for round image
+
+    
+    if user_name == "Balaji Kannan":
+        col1,col2 = st.columns([0.2,0.8])
+        with col1:
+            st.image("https://via.placeholder.com/50", width=100)  # A 50x50 placeholder image
+        with col2:
+        #     st.title(":blue[Balaji Kannan]")
+        #     st.subheader("St. Joseph Matric Hr Sec School")
+        # with col2:
+            st.markdown(
+            """
+            <div style="display: flex; flex-direction: column; justify-content: center; height: 100px;">
+                <h1 style="margin: 0; color: blue; font-size: 36px;">Balaji Kannan</h1>
+                <h3 style="margin: 0; color: black; font-size: 18px;">St. Joseph Matric Hr Sec School</h3>
+            </div>
+            """, unsafe_allow_html=True
+        )
+    elif user_name == "Leo Akash":
+        col1,col2 = st.columns([0.3,0.9])
+        with col1:
+            st.image("https://via.placeholder.com/50", width=100)  # A 50x50 placeholder image
+        with col2:
+            st.markdown(
+            """
+            <div style="display: flex; flex-direction: column; justify-content: center; height: 100px;">
+                <h1 style="margin: 0; color: blue; font-size: 36px;">Leo Akash</h1>
+                <h3 style="margin: 0; color: black; font-size: 18px;">Consultant</h3>
+            </div>
+            """, unsafe_allow_html=True
+        )
+    else:
+        #st.title(":blue[Kannan]")
+        #st.subheader("No information available")
+        col1,col2 = st.columns([0.3,0.9])
+        with col1:
+            st.image("https://via.placeholder.com/50", width=100)  # A 50x50 placeholder image
+        with col2:
+            st.markdown(
+            """
+            <div style="display: flex; flex-direction: column; justify-content: center; height: 100px;">
+                <h1 style="margin: 0; color: blue; font-size: 36px;">Kannan</h1>
+            </div>
+            """, unsafe_allow_html=True
+        )
+
 
 def login_page_2():
     from PIL import Image
@@ -294,6 +342,7 @@ def login_page_2():
 
 def feed_page():
     # Example posts
+    st.image(logo_path, use_column_width=True)
     posts = [
         {"text": "Had a great day!", "time": "2024-08-14 18:45:00"},
         {"text": "Excited about the new project launch tomorrow!", "time": "2024-08-13 09:30:00"},
@@ -301,21 +350,21 @@ def feed_page():
     ]
 
     # Page Header
-    st.markdown("---")
-    st.markdown("""
-        <style>
-        .header {
-            background-color: #3b5998;
-            color: white;
-            padding: 10px;
-            font-size: 24px;
-            text-align: center;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        </style>
-        <div class="header">Redefined Education</div>
-    """, unsafe_allow_html=True)
+    # st.markdown("---")
+    # st.markdown("""
+    #     <style>
+    #     .header {
+    #         background-color: #3b5998;
+    #         color: white;
+    #         padding: 10px;
+    #         font-size: 24px;
+    #         text-align: center;
+    #         border-radius: 10px;
+    #         margin-bottom: 20px;
+    #     }
+    #     </style>
+    #     <div class="header">Redefined Education</div>
+    # """, unsafe_allow_html=True)
 
     # Check if the user is a super admin
     if 'role' not in st.session_state:
@@ -385,28 +434,48 @@ def feed_page():
 def student_forum_page():
     st.markdown("---")
 
-    st.sidebar.markdown("### Project")
-    st.sidebar.button(":blue[General]", key="space_data_ai_ml")
-    st.sidebar.button(":blue[Project 1]", key="alumni_gl_connect")
-    st.sidebar.button(":blue[Project 2]", key="alumni_gl_connect_1")
+    # st.sidebar.markdown("### Project")
+    # st.sidebar.button(":blue[General]", key="space_data_ai_ml")
+    # st.sidebar.button(":blue[Project 1]", key="alumni_gl_connect")
+    # st.sidebar.button(":blue[Project 2]", key="alumni_gl_connect_1")
     #st.sidebar.markdown("### Expertise")
     #st.sidebar.button("Expertise", key="alumni_gl_connect")
-    st.sidebar.markdown("**Terms** · © Copyright 2024")
+    #st.sidebar.markdown("**Terms** · © Copyright 2024")
 
-    for _ in range(5):  
-        st.sidebar.write("")
+    # for _ in range(1):  
+    #     st.sidebar.write("")
 
-    logout_container = st.sidebar.container()
+    # # profile_button = st.sidebar.button('Profile')
 
-    with logout_container:
-        if st.sidebar.button("Log Out", key="logout_bottom"):
-            logout()
-            st.experimental_rerun()
-    logout_container.markdown('<div class="logout-container"></div>', unsafe_allow_html=True)
+    # # if profile_button:
+    # #     st.session_state.selected_page = 'PROFILE'
+    # #     st.experimental_rerun()
+    
+    # # # Page content based on selected page
+    # # if st.session_state.selected_page == 'PROFILE':
+    # #     profile_page()
+
+    # logout_container = st.sidebar.container()
+
+    # with logout_container:
+    #     if st.sidebar.button("Log Out", key="logout_bottom"):
+    #         logout()
+    #         st.experimental_rerun()
+    # logout_container.markdown('<div class="logout-container"></div>', unsafe_allow_html=True)
 
 
-    st.title(":sunglasses :blue[Balaji Kannan]")
-    st.subheader("St.Joseph Matric Hr Sec School")
+    # st.title(":sunglasses :blue[Balaji Kannan]")
+    # st.subheader("St.Joseph Matric Hr Sec School")
+
+    options = ['General', 'Project A', 'Project B']
+    selected_option = st.selectbox("Pick a project:", options)
+
+    # Display the selected option
+    #st.write(f"You selected: {selected_option}")
+    # tab1,tab2 = st.tabs(["General", "Project A", "Project B"])
+    # with tabl:
+    #     st.write("")
+    
     #st.subheader("Entrepreneurship")
     st.markdown("---")
 
@@ -464,19 +533,10 @@ def student_forum_page():
     with col2:
         st.markdown("")
         st.markdown("### Project Info")
-
         
         st.write("Project Name : XXXX")
         st.write("Tutor : YYYY")
         st.write("Student Classification : ZZZZ")
-
-        # st.markdown("---")
-        # st.markdown("### Tags")
-        # st.button("Business")
-        # st.button("Weekend Challenge ⚡")
-        # st.button("Statistics")
-        # st.button("Question of the Day 💡")
-        # st.button("Entrepreneurship")
 
 def student_org_tree():
     students = [
@@ -518,26 +578,36 @@ def logout():
 
 def tutor_forum_page():
     st.markdown("---")
-    st.sidebar.markdown("### Skills")
+    # st.sidebar.markdown("### Projects")
 
-    if st.sidebar.button("Entrepreneurship", key="btn_entrepreneurship"):
-        st.session_state.selected_page = "entrepreneurship"
-    if st.sidebar.button("Speaking", key="btn_speaking"):
-        st.session_state.selected_page = "speaking"
+    # if st.sidebar.button("Entrepreneurship", key="btn_entrepreneurship"):
+    #     st.session_state.selected_page = "entrepreneurship"
+    # if st.sidebar.button("Speaking", key="btn_speaking"):
+    #     st.session_state.selected_page = "speaking"
 
-    st.sidebar.markdown("### Alumni")
-    st.sidebar.button("REDE Alumni", key="btn_alumni")
+    # st.sidebar.markdown("### Alumni")
+    # st.sidebar.button("REDE Alumni", key="btn_alumni")
+    
+
+    # profile_button = st.sidebar.button('Profile')
+
+    # if profile_button:
+    #     st.session_state.selected_page = 'PROFILE'
+    #     st.experimental_rerun()
+    
+    # # Page content based on selected page
+    # if st.session_state.selected_page == 'PROFILE':
+    #     profile_page()
+
+    # logout_container = st.sidebar.container()
+
+    # with logout_container:
+    #     if st.sidebar.button("Log Out", key="logout_bottom"):
+    #         logout()
+    #         st.experimental_rerun()
+    # logout_container.markdown('<div class="logout-container"></div>', unsafe_allow_html=True)
+
     st.sidebar.markdown("**Terms** · © Copyright 2024")
-
-    for _ in range(15):
-        st.sidebar.write("")
-
-    logout_container = st.sidebar.container()
-    with logout_container:
-        if st.sidebar.button("Log Out", key="logout_bottom"):
-            logout()
-            st.experimental_rerun()
-    logout_container.markdown('<div class="logout-container"></div>', unsafe_allow_html=True)
 
     if "entrepreneurship_response" not in st.session_state:
         st.session_state["entrepreneurship_response"] = ""
@@ -553,59 +623,79 @@ def tutor_forum_page():
     tab1, tab2 = st.tabs(["Forum", "Students"])
 
     with tab1:
-        col1, col2 = st.columns([0.7, 0.3])
 
+        data = {
+            "School A": {
+                "Project X": ["Aravinth", "Bala", "Balaji"],
+                "Project Y": ["Barath", "Deepak"]
+            },
+            "School B": {
+                "Project Z": ["Manivannan", "Leo"],
+                "Project W": ["Sandy", "Ice", "Nandhini"]
+            }
+        }
+
+        # School Dropdown
+        col1, col2, col3 = st.columns(3)
+
+        # School Dropdown
         with col1:
-            if "selected_page" in st.session_state:
-                if st.session_state.selected_page == "entrepreneurship":
-                    st.title("Entrepreneurship")
-                    st.markdown("##### Newest")
-                    st.write("**Sathish Kumar**")
-                    st.caption("3 minutes ago · Posted in Entrepreneurship")
-                    st.write("Entrepreneurship is the process by which either an individual or a team identifies a business opportunity and acquires and deploys the necessary resources required for its exploitation.")
+            selected_school = st.selectbox("Select School", options=list(data.keys()))
 
-                    # Display the form within a button-click context
-                    if st.button('Respond', key="btn_respond_entrepreneurship"):
-                        with st.form(key="new_discussion_entrepreneurship"):
-                            st.text_area(" ", key="user_response_entrepreneurship", height=100)
-                            st.form_submit_button(label="Post", on_click=submit_entrepreneurship_response)
-
-                    if st.session_state["entrepreneurship_response"]:
-                        st.write("**Tutor Response (Leo):**")
-                        st.write(st.session_state["entrepreneurship_response"])
-                        st.write("---")
-
-                if st.session_state.selected_page == "speaking":
-                    st.title("Speaking")
-                    st.markdown("##### Newest")
-                    st.write("**Balaji**")
-                    st.caption("3 minutes ago · Posted in Speaking")
-                    st.write("How to improve pronunciation.")
-
-                    if st.button('Respond', key="btn_respond_speaking"):
-                        with st.form(key="new_discussion_speaking"):
-                            st.text_area(" ", key="user_response_speaking", height=100)
-                            st.form_submit_button(label="Post", on_click=submit_speaking_response)
-
-                    if st.session_state["speaking_response"]:
-                        st.write("**Tutor Response (Leo):**")
-                        st.write(st.session_state["speaking_response"])
-                        st.write("---")
-
+        # Project Dropdown - filtered by selected school
         with col2:
-            st.write('\n\n')
-            st.markdown("### Tags")
-            st.button("Business")
-            st.button("Weekend Challenge⚡")
-            st.button("Statistics")
-            st.button("Question of the Day💡")
-            st.button("Entrepreneurship")
-            st.write('\n \n \n')
-            st.write('\n \n \n')
-            st.write('\n \n \n')
-            st.markdown("---")
-            st.markdown("### Leaderboard")
-            st.info("Leaderboard feature is under development.")
+            if selected_school:
+                selected_project = st.selectbox("Select Project", options=list(data[selected_school].keys()))
+            else:
+                selected_project = st.selectbox("Select Project", options=[])
+
+        # Student Dropdown - filtered by selected project
+        with col3:
+            if selected_project:
+                selected_student = st.selectbox("Select Student", options=data[selected_school][selected_project])
+            else:
+                selected_student = st.selectbox("Select Student", options=[])
+
+        # Add a link to navigate to student module
+        if selected_student:
+            #st.markdown(f"[Go to Student Module for {selected_student}](/student_module_page?student={selected_student})")
+            col1, col2 = st.columns([0.7, 0.3])
+
+        with st.container():
+            # Create two columns
+
+            st.markdown("#### Balaji  | School A  | Project A")
+            st.caption("3 minutes ago · Posted in Entrepreneurship")
+            st.write("Entrepreneurship is the process by which either an individual or a team identifies a business opportunity and acquires and deploys the necessary resources required for its exploitation.")
+
+                    # Display a text area for responding to the post
+            with st.form(key="new_discussion_entrepreneurship"):
+                response_text = st.text_area("Reply to this post:", key="user_response_entrepreneurship", height=100)
+                submit_button = st.form_submit_button(label="Post", on_click=submit_entrepreneurship_response)
+
+            st.markdown("#### Manivannan  | School B  | Project A")
+            st.caption("10 minutes ago · Posted in Entrepreneurship")
+            st.write("Thanks for the notes.")
+
+                    # Display a text area for responding to the post
+            with st.form(key="discussion_entrepreneurship"):
+                response_text = st.text_area("Reply to this post:", key="response_entrepreneurship", height=100)
+                submit_button = st.form_submit_button(label="Post", on_click=submit_entrepreneurship_response)
+
+        # with col2:
+        #     st.write('\n\n')
+        #     st.markdown("### Tags")
+        #     st.button("Business")
+        #     st.button("Weekend Challenge⚡")
+        #     st.button("Statistics")
+        #     st.button("Question of the Day💡")
+        #     st.button("Entrepreneurship")
+        #     st.write('\n \n \n')
+        #     st.write('\n \n \n')
+        #     st.write('\n \n \n')
+        #     st.markdown("---")
+        #     st.markdown("### Leaderboard")
+        #     st.info("Leaderboard feature is under development.")
 
     with tab2:
         st.markdown("### School and Student Details")
@@ -653,101 +743,160 @@ def tutor_module_page():
             "Notes": ["[Link](https://example.com/notes1)", "[Link](https://example.com/notes2)", "[Link](https://example.com/notes3)"],
         })
 
-    # School Dropdown
-    selected_school = st.selectbox("Select School", options=list(data.keys()))
+    tab1,tab2 = st.tabs(["General upload", "Bulk upload"])
 
-    # Project Dropdown - filtered by selected school
-    if selected_school:
-        selected_project = st.selectbox("Select Project", options=list(data[selected_school].keys()))
-    else:
-        selected_project = st.selectbox("Select Project", options=[])
+    with tab1:
+        # School Dropdown
+        col1, col2 = st.columns(2)
 
-    # Student Dropdown - filtered by selected project
-    if selected_project:
-        selected_student = st.selectbox("Select Student", options=data[selected_school][selected_project])
-    else:
-        selected_student = st.selectbox("Select Student", options=[])
+        # School Dropdown
+        with col1:
+            student_ID = st.text_input("Enter Student ID")
 
-    # Display the selected values
-    st.write(f"Selected School: {selected_school}")
-    st.write(f"Selected Project: {selected_project}")
-    st.write(f"Selected Student: {selected_student}")
+        # Project Dropdown - filtered by selected school
+        with col2:
+            project_ID = st.text_input("Enter Project ID")
 
-    # Add a link to navigate to student module
-    if selected_student:
-        st.markdown(f"[Go to Student Module for {selected_student}](/student_module_page?student={selected_student})")
+        st.markdown("### Add a Session")
+
+        col3, col4, col5 = st.columns(3)
+
+        with col3:
+            date = st.date_input("Enter Date")
+
+        with col4:
+            expert = st.text_input("Enter Expert Name", placeholder="e.g., Dr. Smith")
+
+        with col5:
+            topic = st.text_input("Enter Topic", placeholder="e.g., Advanced Market Research")
+
+        # Additional columns for Recording and Notes URLs
+        col7, col8 = st.columns(2)
+
+        with col7:
+            recording = st.text_input("Enter Recording URL", placeholder="e.g., https://...")
+
+        with col8:
+            notes = st.text_input("Enter Notes URL", placeholder="e.g., https://...")
+
+        # Button to submit the data
+        if st.button("Add Record"):
+            new_data = {
+                "Expert": expert,
+                "Date": date.strftime('%Y-%m-%d'),
+                "Topic": topic,
+                "Recording": f"[Link]({recording})",
+                "Notes": f"[Link]({notes})"
+            }
+            st.session_state.df = st.session_state.df.append(new_data, ignore_index=True)
+            st.success("Record added successfully!")
+
+        # Display the current DataFrame
+        st.write(st.session_state.df)
+
+
+        st.markdown("### Delete a Session")
+        delete_index = st.number_input("Select row index to delete", min_value=0, max_value=len(st.session_state.df)-1, step=1)
+        if st.button("Delete Session"):
+            st.session_state.df = st.session_state.df.drop(delete_index).reset_index(drop=True)
+            st.success("Session deleted successfully!")
+        
+        # Display updated data
+        st.write("Updated Expert Sessions")
+        st.dataframe(st.session_state.df, width=1000, height=None)
+
+    # # Display the selected values
+    # st.write(f"Selected School: {selected_school}")
+    # st.write(f"Selected Project: {selected_project}")
+    # st.write(f"Selected Student: {selected_student}")
+
+        # Add a link to navigate to student module
+        # if selected_student:
+        #     st.markdown(f"[Go to Student Module for {selected_student}](/student_module_page?student={selected_student})")
 
     # Section for Weekly Expert Sessions with CSV upload or manual entry
-    st.markdown("### Weekly Expert Sessions")
+    #st.markdown("### Weekly Expert Sessions")
     
-    # File uploader for CSV
-    uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
-    
-    if uploaded_file:
-        new_data = pd.read_csv(uploaded_file)
-        st.session_state.df = pd.concat([st.session_state.df, new_data], ignore_index=True)
-        st.success("Data added successfully from CSV!")
-    
-    st.write("Or manually add a new record:")
-    
-    # Manual entry form
-    with st.form(key="add_record_form"):
-        week = st.text_input("Week")
-        expert = st.text_input("Expert Name")
-        date = st.date_input("Date")
-        topic = st.text_input("Topic")
-        recording = st.text_input("Recording URL")
-        notes = st.text_input("Notes URL")
-        submit_button = st.form_submit_button(label="Add Record")
+    with tab2:
+        # File uploader for CSV
+        uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
         
-        if submit_button:
-            new_entry = pd.DataFrame({
-                "Week": [week],
-                "Expert": [expert],
-                "Date": [date],
-                "Topic": [topic],
-                "Recording": [f"[Link]({recording})"],
-                "Notes": [f"[Link]({notes})"]
-            })
-            st.session_state.df = pd.concat([st.session_state.df, new_entry], ignore_index=True)
-            st.success("New record added successfully!")
+        if uploaded_file:
+            new_data = pd.read_csv(uploaded_file)
+            st.session_state.df = pd.concat([st.session_state.df, new_data], ignore_index=True)
+            st.success("Data added successfully from CSV!")
     
-    # # Display the current data
-    # st.markdown("### Current Expert Sessions")
-    # st.dataframe(st.session_state.df, width=1000, height=None)
-
-    # Delete data section
-    st.markdown("### Delete a Session")
-    delete_index = st.number_input("Select row index to delete", min_value=0, max_value=len(st.session_state.df)-1, step=1)
-    if st.button("Delete Session"):
-        st.session_state.df = st.session_state.df.drop(delete_index).reset_index(drop=True)
-        st.success("Session deleted successfully!")
+    # with tab3:
+    #     st.write("Or manually add a new record:")
     
-    # Display updated data
-    st.write("Updated Expert Sessions")
-    st.dataframe(st.session_state.df, width=1000, height=None)
+    # # Manual entry form
+    #     with st.form(key="add_record_form"):
+    #         # student_ID = st.text_input("Student_ID")
+    #         # week = st.text_input("Week")
+    #         # expert = st.text_input("Expert Name")
+    #         # date = st.date_input("Date")
+    #         # topic = st.text_input("Topic")
+    #         # recording = st.text_input("Recording URL")
+    #         # notes = st.text_input("Notes URL")
 
-    # # Add a link to navigate to student module
-    # if selected_student:
-    #     st.markdown(f"[Go to Student Module for {selected_student}](/student_module_page?student={selected_student})")
+    #         col1, col2, col3, col4 = st.columns(4)
+            
+    #         with col1:
+    #             student_ID = st.text_input("Student_ID")
+            
+    #         with col2:
+    #             week = st.text_input("Week")
+            
+    #         with col3:
+    #             expert = st.text_input("Expert Name")
+            
+    #         with col4:
+    #             date = st.date_input("Date")
+            
+    #         # Second row with 4 columns
+    #         col5, col6, col7, col8 = st.columns(4)
+            
+    #         with col5:
+    #             topic = st.text_input("Topic")
+            
+    #         with col6:
+    #             recording = st.text_input("Recording URL")
+            
+    #         with col7:
+    #             notes = st.text_input("Notes URL")
+            
+    #         with col8:
+    #             # Leave this empty or add another input if needed
+    #             pass
+
+    #         submit_button = st.form_submit_button(label="Add Record")
+            
+    #         if submit_button:
+    #             new_entry = pd.DataFrame({
+    #                 "Student_ID" : [student_ID],
+    #                 "Week": [week],
+    #                 "Expert": [expert],
+    #                 "Date": [date],
+    #                 "Topic": [topic],
+    #                 "Recording": [f"[Link]({recording})"],
+    #                 "Notes": [f"[Link]({notes})"]
+    #             })
+    #             st.session_state.df = pd.concat([st.session_state.df, new_entry], ignore_index=True)
+    #             st.success("New record added successfully!")
+        
 
 
 def student_module_page():
     st.title(":sunglasses :blue[Balaji Kannan]")
     st.subheader("St.Joseph Matric Hr Sec School")
     st.markdown("---")
-    st.subheader(f"My Progress - :blue[Phase 1]")
+    #st.subheader(f"My Progress - :blue[Phase 1]")
     st.write("\n")
     header_col, content_col = st.columns([2, 1])
 
     with header_col:
         st.markdown("<div style='text-align: left;'>", unsafe_allow_html=True)
         tab1, tab2, tab3, tab4, tab5 = st.tabs(["Upcoming", "Ongoing", "Completed", "Psychometric Test", "Psychometric Test Upload"])
-
-        # with tab1:
-        #     st.write("### Upcoming Tasks")
-        #     st.write("1. **Google Meeting:** [Join here](https://meet.google.com/) at 10:00 AM, 16th Aug 2024")
-        #     st.write("2. **Course Video:** Introduction to Entrepreneurship, Due by 20th Aug 2024")
 
         with tab2:
             st.write("### Ongoing Tasks")
@@ -824,7 +973,7 @@ def student_module_page():
                 margin=dict(l=20, r=20, t=40, b=20) 
             )
             st.plotly_chart(fig, use_container_width=False)
-            st.markdown('<div class="attendance-box"><div class="metric-label">Gradebook</div>', unsafe_allow_html=True)
+            st.markdown('<div class="attendance-box"><div class="metric-label">Progess Status</div>', unsafe_allow_html=True)
             st.write("")
             col1, col2, col3 = st.columns(3)
 
@@ -841,9 +990,8 @@ def student_module_page():
 
 
 def student_module_page_1():
-    
     st.markdown("---")
-    st.subheader(f"My Progress - :blue[Phase 1]")
+    # st.subheader(f"My Progress - :blue[Phase 1]")
     st.write("\n")
     header_col, content_col = st.columns([2, 1])
 
@@ -878,40 +1026,56 @@ def student_module_page_1():
                 
         st.markdown("</div>", unsafe_allow_html=True)
 
-        # Project Dropdown and Status
         st.markdown("### Project Selection")
         project_name = st.selectbox("Select Project", ["Project A", "Project B", "Project C"])
-        # Circular Gauge for Progress
-        completion_percentage = st.slider("Set Project Completion Percentage", 0, 100, 5)
 
-        fig = go.Figure(go.Indicator(
-            mode="gauge+number",
-            value=completion_percentage,
-            gauge={'axis': {'range': [0, 100]},
-                   'bar': {'color': "#4caf50"},
-                   'steps': [
-                       {'range': [0, 100], 'color': "#81c784"}],
-                   'threshold': {'line': {'color': "red", 'width': 2}, 'thickness': 0.50, 'value': 90}},
-            title={'text': "Completion"}))
+        #completion_percentage = st.slider("Set Project Completion Percentage", 0, 100, 5)
 
-        fig.update_layout(width=300, height=300)
+        # fig = go.Figure(go.Indicator(
+        #     mode="gauge+number",
+        #     value=completion_percentage,
+        #     gauge={'axis': {'range': [0, 100]},
+        #            'bar': {'color': "#4caf50"},
+        #            'steps': [
+        #                {'range': [0, 100], 'color': "#81c784"}],
+        #            'threshold': {'line': {'color': "red", 'width': 2}, 'thickness': 0.50, 'value': 90}},
+        #     title={'text': "Completion"}))
 
-        st.plotly_chart(fig)
+        # fig.update_layout(width=300, height=300)
+
+        #st.plotly_chart(fig)
         
-        # Weekly Expert Details Table
-        st.markdown("### Weekly Expert Sessions")
-        if 'df' in st.session_state:
-            df = st.session_state.df
-            st.dataframe(df, width=1000, height=None)
-        else:
-            st.write("No data available")
+        # st.markdown("### Previous Expert Sessions")
+        # if 'df' in st.session_state:
+        #     df = st.session_state.df
+        #     st.dataframe(df, width=1000, height=None)
+        # else:
+        #     st.write("No data available")
+       
+    st.markdown("---")
+    st.markdown("### Upcoming Expert Sessions")
+    st.write(pd.DataFrame({
+            #"Week": ["Week 1", "Week 2", "Week 3"],
+            "Date": ["2024-08-15"],
+            "Expert": ["Alice Brown"],
+            "Topic": ["Business Planning"],
+            "Recording": ["[Link](https://example.com/rec3)"],
+            "Notes": ["[Link](https://example.com/notes3)"],
+        }))
 
-        st.markdown("---")
-        st.write("**No progress yet!**")
-        st.write("When we see some activity, progress will show up here.")
+    st.markdown("### Previous Expert Sessions")
+    st.write(pd.DataFrame({
+            #"Week": ["Week 1", "Week 2", "Week 3"],
+            "Date": ["2024-08-01", "2024-08-08"],
+            "Expert": ["John Doe", "Jane Smith"],
+            "Topic": ["Introduction to Entrepreneurship", "Market Research"],
+            "Recording": ["[Link](https://example.com/rec1)", "[Link](https://example.com/rec2)"],
+            "Notes": ["[Link](https://example.com/notes1)", "[Link](https://example.com/notes2)"],
+        }))
+   
+
 
     with content_col:
-        # The content_col section remains as it was with the attendance bar and icons
         from PIL import Image
         import requests
         from io import BytesIO
@@ -1030,11 +1194,38 @@ def student_module_page_1():
             </style>
         """, unsafe_allow_html=True)
 
+        # Layout for the attendance bar
         with st.container():
 
             # Gradebook button with animation
-            st.markdown('<div class="gradebook-box">Gradebook</div>', unsafe_allow_html=True)
+            st.markdown('<div class="gradebook-box">Progress Status</div>', unsafe_allow_html=True)
             st.markdown('---')
+            #st.markdown('<hr class="gradebook-line">', unsafe_allow_html=True)
+
+            st.markdown("""
+
+    <style>
+    .gradebook-box, .attendance-container {
+        margin-bottom: 0px;
+    }
+    .attendance-container {
+        margin-top: 40px; /* Add space above Attendance box */
+    }
+    hr {
+        margin: 0px;
+    }
+    .metric-label {
+        color: #6c757d;
+        font-size: 12px; /* Reduced font size */
+        white-space: nowrap; /* Prevent word wrap */
+    }
+    .metric-value {
+        font-size: 20px; /* Reduced font size */
+        font-weight: bold;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 
             # Metrics for In Progress, Completed, and Incomplete
             col1, col2, col3 = st.columns(3)
@@ -1048,6 +1239,8 @@ def student_module_page_1():
 
             st.markdown('<div class="attendance-container">Attendance</div>', unsafe_allow_html=True)
             st.markdown('---')
+           # st.markdown('<hr class="attendance-line">', unsafe_allow_html=True)
+
 
             col1, col2, col3 = st.columns([1, 8, 1])
 
@@ -1067,23 +1260,16 @@ def student_module_page_1():
                 st.image(trophy_icon, width=35)  # Trophy icon
 
             st.markdown('</div>', unsafe_allow_html=True)
-
-
-
 def parent_page():
-    # Sidebar with profile and logout buttons
-    for _ in range(20):  
-        st.sidebar.write("")
-    
-    st.sidebar.button("Profile", key="bottom")
-    logout_container = st.sidebar.container()
+    # st.sidebar.button("Profile", key="bottom")
+    # logout_container = st.sidebar.container()
 
-    with logout_container:
-        if st.sidebar.button("Log Out", key="logout_bottom"):
-            logout()
-            st.experimental_rerun()
+    # with logout_container:
+    #     if st.sidebar.button("Log Out", key="logout_bottom"):
+    #         logout()
+    #         st.experimental_rerun()
 
-    logout_container.markdown('<div class="logout-container"></div>', unsafe_allow_html=True)
+    # logout_container.markdown('<div class="logout-container"></div>', unsafe_allow_html=True)
 
     # Tabs similar to student module
     tab1, tab2, tab3 = st.tabs(["Student Activity", "Tutor Details", "Team Members"])
@@ -1177,6 +1363,8 @@ def parent_page():
 
 def show_student_profile_page():
     st.title("Balaji Kannan")
+        # Add your profile information here
+    st.image("https://via.placeholder.com/150", width=150)
     
     # Sample data
     school_name = "Sunrise High School"
@@ -1218,6 +1406,8 @@ def show_tutor_profile_page():
 
     task_tree = """
         digraph G {
+            rankdir=TB;
+            node [shape=box];
             "Leo Akash" -> "Aravinth";
             "Leo Akash" -> "Balaji";
             "Leo Akash" -> "Bala";
@@ -1231,7 +1421,6 @@ def show_tutor_profile_page():
         }
         """
     st.graphviz_chart(task_tree)
-
 
 SCHOOLS = {
     "School A": {
@@ -1261,6 +1450,30 @@ SCHOOLS = {
 # Function to display the tutor-student hierarchy
 def tutor_student_hierarchy():
     st.title("Tutor-Student Hierarchy")
+    
+    schools = {
+    "School A": {
+        "Project X": [
+            {"student": "Aravinth", "posts": [
+                {"post_id": 1, "content": "How can I improve my business pitch?", "responses": []},
+                {"post_id": 2, "content": "Any tips for effective market research?", "responses": []}
+            ]},
+            {"student": "Bala", "posts": [
+                {"post_id": 3, "content": "Best practices for financial planning?", "responses": []}
+            ]}
+        ]
+    },
+    "School B": {
+        "Project Z": [
+            {"student": "Manivannan", "posts": [
+                {"post_id": 4, "content": "How to identify a profitable business idea?", "responses": []}
+            ]},
+            {"student": "Leo", "posts": [
+                {"post_id": 5, "content": "Tips for pitching to investors?", "responses": []}
+            ]}
+        ]
+    }
+}
 
     # Get all unique school names, projects, and student names
     school_names = list(schools.keys())
@@ -1299,18 +1512,43 @@ def tutor_student_hierarchy():
                             st.write(f"{student_name}: {questions_asked} questions")
 
 def profile_page():
-    # Display profile information
-    st.title("Profile Information")
+    st.title("Leo Akash")
     # Add your profile information here
-    st.image("C:\\Users\\Admin\\Downloads\\profile-picture.png", width=150)  # Replace with actual path
-    st.subheader("Personal Information")
-    st.write("**Name:** Balaji Kannan")
-    st.write("**School:** st joseph mat hr sec school")
-    st.write("**Date of Birth:** March 4 1997")
-    st.write("**Class:** 10th Grade")
-    st.write("**Syllabus:** CBSC")
-    st.write("**MAIL ID:** balajicr****@gmail.com")
-    # Add more information as needed
+    st.image("https://via.placeholder.com/150", width=150)
+    
+    # Sample data
+    #school_name = "Sunrise High School"
+    dob = "1985-09-15"
+    #grade = "10th Grade"
+    #syllabus = 'CBSE'  # Corrected spelling for the syllabus
+    email = 'xyz@gmail.com'  # Assigned email to a variable
+    
+    st.write("**User Name:** Leo Akash")
+    st.write("**Change Password:** [Click here to change password](#)")  # Example link for changing password
+
+    # st.write("**School Name:**", school_name)
+    # st.write("**Syllabus:**", syllabus)
+    st.write("**Date of Birth:**", dob)
+    # st.write("**Grade:**", grade)
+    st.write("**Mail ID:**", email)
+
+    task_tree = """
+        digraph G {
+            rankdir=TB;
+            node [shape=box];
+            "Leo Akash" -> "Aravinth";
+            "Leo Akash" -> "Balaji";
+            "Leo Akash" -> "Bala";
+            "Leo Akash" -> "Deepak";
+            "Deepak" -> "Sajjad";
+            "Sajjad" -> "School A Supervisor";
+            "School A Supervisor" -> "Tutor A";
+            "Balaji" -> "manivannan";
+            "manivannan" -> "School B Supervisor";
+            "School B Supervisor" -> "Tutor B";
+        }
+        """
+    st.graphviz_chart(task_tree)
 
 def dashboard():
     # Page background color
@@ -1342,9 +1580,6 @@ def dashboard():
 
     # Sidebar for page selection using buttons
     st.sidebar.header("Navigation")
-
-    # Profile button
-    profile_button = st.sidebar.button('profile')
     
     if st.sidebar.button("Feed"):
         st.session_state.selected_page = 'Feed'
@@ -1357,28 +1592,49 @@ def dashboard():
     if st.sidebar.button("Module"):
         st.session_state.selected_page = 'Module'
         st.experimental_rerun()
+    
+    for _ in range(15):  
+        st.sidebar.write("")
 
-    if profile_button:
+    if st.sidebar.button("Profile", key='profile_button'):
         st.session_state.selected_page = 'PROFILE'
         st.experimental_rerun()
-        
-    # Page content based on selected page
-    if selected_page == 'PROFILE':
-        profile_page()
+    # profile_button = st.sidebar.button('profile')
 
-    # elif st.session_state.user_role == 'kannan':
-    #     parent_page()
+    # if profile_button:
+    #     st.session_state.selected_page = 'PROFILE'
+    #     st.experimental_rerun()
+        
+    # # Page content based on selected page
+    # if selected_page == 'PROFILE':
+    #     profile_page()
 
     else:
         if selected_page == 'Feed':
             st.write("\n" * 20)  # Add vertical space to simulate sidebar behavior
+            if 'selected_page' not in st.session_state:
+                st.session_state.selected_page = 'Feed'  # Default page
+
+            # Sidebar buttons
+            # profile_button = st.sidebar.button('Profile', key='profile_button')
+
+            # if profile_button:
+            #     st.session_state.selected_page = 'PROFILE'
+            #     st.experimental_rerun()
+
+            # # Main content based on selected page
+            # if st.session_state.selected_page == 'PROFILE':
+            #     profile_page()
+            
             logout_container = st.container()
-            with logout_container:
+            
+            with st.sidebar:
                 if st.button("Log Out", key="logout_button"):
                     logout()
                     st.experimental_rerun()
             feed_page()
-
+        elif selected_page == 'PROFILE':
+            profile_page()
         elif selected_page == 'Forum':
             if st.session_state.user_role.capitalize() == 'Balaji':
                 student_forum_page()
@@ -1389,8 +1645,17 @@ def dashboard():
 
         elif selected_page == 'Module':
             st.write("\n" * 18)  # Add vertical space for module pages
-            logout_container = st.container()
-            with logout_container:
+            profile_button = st.sidebar.button('profile')
+
+            if profile_button:
+                st.session_state.selected_page = 'PROFILE'
+                st.experimental_rerun()
+                
+            # Page content based on selected page
+            if selected_page == 'PROFILE':
+                profile_page()
+
+            with st.sidebar:
                 if st.button("Log Out", key="logout_button"):
                     logout()
                     st.experimental_rerun()
@@ -1402,33 +1667,96 @@ def dashboard():
                 student_module_page_1()
                 parent_page()
 
-    # Fixed position navigation menu
-    st.markdown("""
-    <div class="fixed-bottom">
-        <button onclick="window.location.href='#Feed'">Feed</button>
-        <button onclick="window.location.href='#Forum'">Forum</button>
-        <button onclick="window.location.href='#Module'">Module</button>
-    </div>
-    """, unsafe_allow_html=True)
 
-    # JavaScript to handle button clicks
-    st.markdown("""
-    <script>
-    document.querySelectorAll('.fixed-bottom button').forEach(button => {
-        button.addEventListener('click', (e) => {
-            e.preventDefault();
-            const page = e.target.textContent;
-            const pages = ['Feed', 'Forum', 'Module'];
-            if (pages.includes(page)) {
-                document.querySelector('#' + page).scrollIntoView({behavior: 'smooth'});
-            }
-        });
-    });
-    </script>
-    """, unsafe_allow_html=True)
+def dashboard_1():
+    # Page background color
+    page_bg_color = """
+    <style>
+    .stApp {
+        background-color: #C8A2C8;  /* Light purple background */
+    }
+    .fixed-bottom {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background-color: #fff;
+        padding: 10px;
+        border-top: 1px solid #ccc;
+        box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        text-align: center;
+        z-index: 1000;  /* Ensure it stays on top of other content */
+    }
+    </style>
+    """
+    st.markdown(page_bg_color, unsafe_allow_html=True)
+
+    # Initialize selected_page if not already set
+    if 'selected_page' not in st.session_state:
+        st.session_state.selected_page = 'Feed'
+
+    # Sidebar for page selection using buttons
+    st.sidebar.header("Choose page")
+    
+    # Top navigation buttons
+    if st.sidebar.button("Feed"):
+        st.session_state.selected_page = 'Feed'
+        st.experimental_rerun()
+
+    if st.sidebar.button("Forum"):
+        st.session_state.selected_page = 'Forum'
+        st.experimental_rerun()
+
+    if st.sidebar.button("Module"):
+        st.session_state.selected_page = 'Module'
+        st.experimental_rerun()
+    
+    # Add blank lines before profile and logout buttons
+    for _ in range(18):  
+        st.sidebar.write("")
+
+    # Profile button
+    if st.sidebar.button("Profile", key='profile_button'):
+        if st.session_state.user_role.capitalize() == 'Balaji':
+            st.session_state.selected_page = 'StudentProfile'
+        elif st.session_state.user_role.capitalize() == 'Leo':
+            st.session_state.selected_page = 'TutorProfile'
+        st.experimental_rerun()
+
+
+    # Logout button
+    if st.sidebar.button("Log Out", key="logout_button"):
+        logout()
+        st.experimental_rerun()
+
+    # Page content based on selected page
+    if st.session_state.selected_page == 'Feed':
+        feed_page()
+    elif st.session_state.selected_page == 'Forum':
+        if st.session_state.user_role.capitalize() == 'Balaji':
+            display_user_profile("Balaji Kannan")
+            student_forum_page()
+        elif st.session_state.user_role.capitalize() == 'Leo':
+            display_user_profile("Leo Akash")
+            tutor_forum_page()
+        elif st.session_state.user_role.capitalize() == 'Kannan':
+            student_forum_page()
+    elif st.session_state.selected_page == 'Module':
+        if st.session_state.user_role.capitalize() == 'Balaji':
+            display_user_profile("Balaji Kannan")
+            student_module_page_1()
+        elif st.session_state.user_role.capitalize() == 'Leo':
+            display_user_profile("Leo Akash")
+            tutor_module_page()
+        elif st.session_state.user_role.capitalize() == 'Kannan':
+            student_module_page_1()
+            parent_page()
+    elif st.session_state.selected_page == 'StudentProfile':
+        show_student_profile_page()
+    elif st.session_state.selected_page == 'TutorProfile':
+        profile_page()
+    
 
 if not st.session_state.logged_in:
     login_page()
 else:
-    dashboard()
-
+    dashboard_1()
